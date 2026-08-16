@@ -32,6 +32,9 @@ export class Todo2Component implements OnInit {
     selectRef.value = "";
 
     this._snackbar.snackbar("Todo Added Successfully")
+  }else{
+    this._snackbar.snackbar("Fill all fields...")
+
   }
   }
 
