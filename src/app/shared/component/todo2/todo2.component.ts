@@ -57,6 +57,8 @@ export class Todo2Component implements OnInit {
     inputRef.value = "";
     selectRef.value = "";
 
+    this.IsinEditMode = false;
+
       this._snackbar.snackbar("Todo Update Successfully")
   }else{
     this._snackbar.snackbar("Fill All Fields...")
