@@ -1,0 +1,43 @@
+    <h1 class="alert alert alert-warning text-center">without view child ref</h1>
+
+<div class="container">
+    <div class="row d-flex justify-content-center mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                   <div class="form-group">
+                     <label for="">Enter Todo</label>
+                    <input type="text" class="form-control" placeholder="Enter Todo" #inputRef> 
+                    <select id="" class="form-control mt-3" #selectRef>
+                        <option value="true">Completed</option>
+                        <option value="false">Pending</option>
+
+                    </select>
+                   </div>
+                   <button class="btn btn-primary btn-block"  *ngIf="!IsinEditMode"  (click)="addTodo(inputRef, selectRef)">Add Todo</button>
+                   <button class="btn btn-success btn-block" *ngIf="IsinEditMode"  (click)="updateTodo(inputRef, selectRef)">Update Todo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mt-4" *ngFor="let data of todoData">
+            <div class="card">
+                <div class="card-header alert alert-danger">
+                    <strong>{{data.task}}</strong>
+                </div>
+                <div class="card-body">
+                    <h3
+                    class="badge"
+                    [ngClass]="data.completed ? 'bg-success' : 'bg-warning'">
+                    {{data.completed ? 'completed' : 'pending'  }}</h3>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <button class="btn btn-outline-info" (click)="editTodo(data, inputRef, selectRef)" [disabled]="IsinEditMode">Edit</button>
+                    <button class="btn btn-outline-danger" (click)="removeTodo(data.id)" [disabled]="IsinEditMode">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
